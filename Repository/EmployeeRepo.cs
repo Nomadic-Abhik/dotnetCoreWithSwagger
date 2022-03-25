@@ -107,6 +107,27 @@ namespace CoreProject1._0.Repository
                 return HttpStatusCode.InternalServerError;
             }
         }
+        public async Task<HttpStatusCode> DeleteEmployee(int id)
+        {
+            try
+            {
+                var existingRecord = _context.EmployeeTable.Where(item => item.EmpCode == id).FirstOrDefault();
+                if (existingRecord != null)
+                {
+                    _context.EmployeeTable.Remove(existingRecord);
+                    await _context.SaveChangesAsync();
+                    return HttpStatusCode.OK;
+                }
+                else
+                {
+                    return HttpStatusCode.NotFound;
+                }
+            }
+            catch (Exception ex)
+            {
+                return HttpStatusCode.InternalServerError;
+            }
 
+        }
     }
 }

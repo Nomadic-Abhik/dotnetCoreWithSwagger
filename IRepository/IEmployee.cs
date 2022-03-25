@@ -14,5 +14,6 @@ namespace CoreProject1._0.IRepository
         public Task<IEnumerable<Employee>> GetEmployeebyInput(string searchData);
         public Task<HttpStatusCode> AddEmployee(Employee model);
         public Task<HttpStatusCode> UpdateEmployee(Employee model);
+        public Task<HttpStatusCode> DeleteEmployee(int id);
     }
 }

@@ -42,5 +42,10 @@ namespace CoreProject1._0.Controllers
         {
             return Ok(await _employee.UpdateEmployee(model));
         }
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] int id)
+        {
+            return Ok(await _employee.DeleteEmployee(id));
+        }
     }
 }
