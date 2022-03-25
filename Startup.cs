@@ -9,6 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreProject1._0.Model;
+using CoreProject1._0.IRepository;
+using CoreProject1._0.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreProject1._0
 {
@@ -25,6 +29,9 @@ namespace CoreProject1._0
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<DALDbContext>(optionns =>
+                 optionns.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddScoped<IEmployee, EmployeeRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
