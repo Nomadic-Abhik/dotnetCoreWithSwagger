@@ -22,9 +22,25 @@ namespace CoreProject1._0.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetData()
+        public async Task<IActionResult> GetAllEmployeeData()
         {
             return Ok(await _employee.GetEmployee());
+        }
+        [HttpGet]
+        [Route("/api/getEmployeebyInput")]
+        public async Task<IActionResult> GetEmployeebyInput(string searchData)
+        {
+            return Ok(await _employee.GetEmployeebyInput(searchData));
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddEmployee(Employee model)
+        {
+            return Ok(await _employee.AddEmployee(model));
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateEmployee(Employee model)
+        {
+            return Ok(await _employee.UpdateEmployee(model));
         }
     }
 }
